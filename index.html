@@ -1,0 +1,84 @@
+<!-- 声明文档类型为 HTML5 -->
+<!DOCTYPE html>
+<!-- 页面语言设置为英语 -->
+<html lang="en">
+
+<head>
+    <!-- 字符编码为 UTF-8，支持中文等特殊字符 -->
+    <meta charset="UTF-8">
+    <!-- 视口设置：适配移动端，缩放比例为 1:1 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 浏览器标签页显示的标题 -->
+    <title>Galaxy Watch Face</title>
+    <!-- 引入外部 CSS 样式表，路径为 css 文件夹下的 style.css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- 表盘主容器，类名为 dashboard -->
+    <div class="dashboard">
+
+        <!-- 表盘背景层，用于显示星空或图片 -->
+        <div class="space-bg"></div>
+
+        <!-- SVG 画布，用于绘制圆环进度条，类名为 circle -->
+        <svg class="circle" viewBox="0 0 400 400">
+
+            <!-- 背景圆环（灰色半透明轨道） -->
+            <circle class="bg" cx="200" cy="200" r="196"></circle>
+
+            <!-- 进度圆环（白色发光，id 用于 JS 控制进度） -->
+            <circle id="batteryRing" class="progress" cx="200" cy="200" r="196"></circle>
+        </svg>
+
+        <!-- 电池百分比显示区域，类名为 battery-top，id 用于 JS 更新电量百分比 -->
+        <div id="batteryTop" class="battery-top">100%</div>
+
+        <!-- 时间显示区域，类名为 time，id 用于 JS 更新时间 -->
+        <div class="time" id="time">
+            22:55
+        </div>
+
+        <!-- 日期显示区域，类名为 date，id 用于 JS 更新日期 -->
+        <div class="date" id="date">
+            SAT JUN 20
+        </div>
+
+        <!-- 底部卡片组容器，类名为 info -->
+        <div class="info">
+            <!-- 天气板块 -->
+            <div class="metric weather">
+                <span class="icon">☁️</span>
+                <span class="value" id="weather">26°</span>
+            </div>
+
+            <!-- 心率板块 -->
+            <div class="metric heart">
+                <span class="icon">❤️</span>
+                <span class="value" id="heart">83</span>
+            </div>
+
+             <!-- 新增：秒 + 上下午（放在步数上方） -->
+            <div class="metric seconds">
+                <span class="metric-value" id="secondsDisplay">00 AM</span>
+            </div>
+
+            <!-- 步数板块（加宽以容纳5位数） -->
+            <div class="metric steps">
+                <span class="icon">👣</span>
+                <span class="value" id="steps">10222</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入外部 JavaScript 文件（实现时钟、电池、天气等交互功能） -->
+    <script src="js/clock.js"></script>
+    <script src="js/battery.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/app.js"></script>
+
+    
+</body>
+</html>
